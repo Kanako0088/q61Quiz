@@ -1,0 +1,32 @@
+version: '3'
+services:
+  app:
+    container_name: quiz_app
+    ports:
+      - "8000:80"
+    build: ./docker/app
+    volumes:
+      - ./src:/var/www/html
+  db:
+    image: mysql:8.0
+    container_name: quiz_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: 'laraveldb'
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./docker/db/volume:/var/lib/mysql
+      - ./docker/db/my.cnf:/etc/mysql/conf.d/my.cnf
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    container_name: quiz_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=root
+      - PMA_PASSWORD=root
+    ports:
+      - 3000:80
