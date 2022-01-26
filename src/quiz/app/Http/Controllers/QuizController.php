@@ -10,16 +10,11 @@ class QuizController extends Controller
 {
   public function term()
   {
-    // $quizzes = Quiz::get(['term'])->toJson(JSON_UNESCAPED_UNICODE);
-    $quizzes = [
-      1 => 1,
-      2 => 1,
-      3 => 2,
-      4 => 1,
-      5 => 3
-    ];
-    $terms = array_unique($quizzes);
-
+    $quizzes = Quiz::groupBy('term')->get(['term']);
+    $terms = array();
+    foreach ($quizzes as $quiz) {
+      $terms[] = $quiz->term;
+    }
     return view('page.term', compact('terms'));
   }
 

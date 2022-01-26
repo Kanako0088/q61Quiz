@@ -13,12 +13,15 @@ class CreateQuizTable extends Migration
      */
     public function up()
     {
-        Schema::create('quiz', function (Blueprint $table) {
+        Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->string('question');
-            $table->json('choice');
+            $table->string('choice1');
+            $table->string('choice2');
+            $table->string('choice3');
+            $table->string('choice4');
             $table->integer('answer');
-            $table->integer('type')->comment('通常:1, 特殊:2, パーソナル:3');;
+            $table->integer('type')->comment('通常:0, 特殊:1~5');
             $table->integer('term');
             $table->string('hint');
             $table->timestamps();
@@ -32,6 +35,6 @@ class CreateQuizTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('quiz');
+        Schema::dropIfExists('quizzes');
     }
 }
