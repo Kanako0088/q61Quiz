@@ -20,8 +20,12 @@ class QuizController extends Controller
 
   public function quiz(int $term_id)
   {
-    $quizzes = Quiz::all()->toJson(JSON_UNESCAPED_UNICODE);
+    $term_url = url()->full();
+    $term_id = substr($term_url, -1, 1);
+    $quizzes = Quiz::where('term',$term_id)
+                ->get()
+                ->toJson(JSON_UNESCAPED_UNICODE);
 
-    return view('page.quiz', compact('quizzes', ['id'=> $term_id]));
+    return view('page.quiz', compact('quizzes'));
   }
 }
