@@ -22,7 +22,7 @@ class QuizController extends Controller
   {
     $term_url = url()->full();
     $term_id = substr($term_url, -1, 1);
-    $quizzes = Quiz::where('term',$term_id)
+    $quizzes = Quiz::where('term', $term_id)
                 ->get()
                 ->toJson(JSON_UNESCAPED_UNICODE);
 

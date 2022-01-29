@@ -24,6 +24,5 @@
 @section('javascript')
 <script>
   const quizzes = <?= $quizzes ?>;
-  // console.log(quizzes);
 </script>
 @endsection
