@@ -1,0 +1,24 @@
+{
+  "name": "laravel_quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kanako0088/laravel_quiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kanako0088/laravel_quiz/issues"
+  },
+  "homepage": "https://github.com/Kanako0088/laravel_quiz#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "tedious": "^14.2.0"
+  }
+}

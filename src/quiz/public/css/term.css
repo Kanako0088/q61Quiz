@@ -19,7 +19,7 @@
 li {
   display: flex;
   align-items: center;
-  padding-left: 70px;
+  /* padding-left: 70px; */
 }
 
 .score_icon {
@@ -71,7 +71,7 @@ li {
   color: white;
   background-color: gray;
 }
-  
+
   #roop #text_s{
     display: flex;
     flex-wrap: wrap;
@@ -90,20 +90,20 @@ li {
   #roop #text_s a+a{
     margin-top: 15px;
   }
-  
+
   #roop .flex ul {
     padding: 0;
   }
-  
+
   #roop .flex a + a {
     margin-top: 10px;
   }
-  
+
   #roop a:hover {
     background: darkslategray;
     color: white;
   }
-  
+
   #hint{
   display: none;
   }

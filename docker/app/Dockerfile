@@ -7,6 +7,9 @@ RUN cd /usr/bin \
     && curl -s http://getcomposer.org/installer | php \
     && ln -s /usr/bin/composer.phar /usr/bin/composer
 
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y nodejs
+
 RUN apt-get update \
     && apt-get install -y \
     git \

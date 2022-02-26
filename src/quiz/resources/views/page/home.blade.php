@@ -50,3 +50,11 @@
     </div>
   </div>
 @endsection
+
+@section('javascript')
+<script>
+  var short01 = "{{ asset('images/media/SIKAMO-short01.mp4')}}";
+  var onimg = "{{ asset('images/top/audio_on.png')}}";
+  var offimg = "{{ asset('images/top/audio_off.png')}}";
+</script>
+@endsection

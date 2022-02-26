@@ -11,4 +11,12 @@ class UserController extends Controller
   {
     return view('page.home');
   }
+  public function before()
+  {
+    return view('page.beforeHome');
+  }
+  public function attention()
+  {
+    return view('page.attention');
+  }
 }

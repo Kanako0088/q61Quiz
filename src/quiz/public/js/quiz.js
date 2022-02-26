@@ -84,5 +84,8 @@ function answer(num) {
     var a = {};
     a.Correctdate = correctquiz_Count;
     const data = JSON.stringify(a);
+
+    var result = document.getElementById('result');
+    result.value = correctquiz_Count;
   }
 }

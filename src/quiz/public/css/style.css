@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body {
   background-color: #dfe6e8;
+  margin: 0px;
 }
 
 a {
@@ -214,6 +215,7 @@ ul {
   border: 2px solid darkslategray;
   border-radius: 5px;
   position: relative;
+  display: block;
 }
 
 #term ul li + li {
@@ -225,7 +227,7 @@ ul {
   display: block;
 }
 
-#term ul li .percent {
+#term ul li a span {
   position: absolute;
   top: 0px;
   right: 0px;
@@ -233,7 +235,13 @@ ul {
   color: #fff;
   padding: 8px 12px;
   display: inline-block;
-  z-index: -1;
+  z-index: 1;
+}
+
+/*正解数で表示非表示*/
+#term ul li .gray {
+  background-color: darkgray;
+  pointer-events: none;
 }
 
 #roop .title {
@@ -424,5 +432,59 @@ ul {
   background-color: rgba(0,0,0,.8);
   z-index: 1;
   cursor: pointer;
+}
+/* 非表示 */
+.is-hide {
+  display: none;
+}
+/* ローディング画面をフェードアウト */
+.fadeout-bg {
+  transition-property: opacity;
+  transition-delay: 0.2s;
+  transition-duration: 1.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+/* ローダーをフェードアウト */
+.fadeout-loader {
+  transition-property: opacity;
+  transition-delay: 1.5s;
+  transition-duration: 1.5s;
+  opacity: 0;
+  pointer-events: none;
+}
+/* ローディング画面 */
+#loader-bg {
+  background: #222;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+#loader {
+  left: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+/* ムービー */
+video {
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  min-width: 100%;
+  min-height: 100%;
+  z-index: 70;
+}
+/* スピーカーオンオフ */
+#speaker {
+  right: 20px;
+  position: fixed;
+  top: 20px;
+  z-index: 110;
 }
 /*# sourceMappingURL=config.css.map */
