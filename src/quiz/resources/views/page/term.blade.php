@@ -5,6 +5,11 @@
   <div class="title">
       <h1>QUIZ</h1>
   </div>
+  @if (session('flash_message'))
+    <div class="flash_message">
+        {{ session('flash_message') }}
+    </div>
+  @endif
   <ul class="term_list">
     @foreach($terms as $key => $term)
       <li id="term{{ $key + 1 }}">
@@ -24,12 +29,5 @@
 @endsection
 
 @section('javascript')
-<script>
-    $(document).ready(function(){
-      let gray = $('.level').attr('class');
-      console.log(gray);
-      $(gray).addClass('gray');
-    });
-</script>
-<script src="{{ asset('js/term.js') }}"></script>
+  <script src="{{ asset('js/term.js') }}"></script>
 @endsection

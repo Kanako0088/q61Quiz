@@ -7,7 +7,7 @@ use App\User;
 
 class UserController extends Controller
 {
-  public function home()
+  public function home(Request $request)
   {
     return view('page.home');
   }
@@ -18,5 +18,15 @@ class UserController extends Controller
   public function attention()
   {
     return view('page.attention');
+  }
+  public function inputname(Request $request)
+  {
+    $name = $request->name;
+    setcookie("yourName", $name, time() + 180);
+    return redirect(route('home'));
+  }
+  public function name(Request $request)
+  {
+    return view('page.name');
   }
 }

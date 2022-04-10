@@ -51,17 +51,17 @@ var onoff = "off";
 $('#onoff-btn').click(function() {
   switch (onoff) {
     case "off":
-       onoff = "on";
-       $(this).attr('src',onimg);
-       bgm.muted = false;
-       bgm.play();
-       break;
+      onoff = "on";
+      $(this).attr('src',onimg);
+      bgm.muted = false;
+      bgm.play();
+      break;
     case "on":
-       onoff = "off";
-       $(this).attr('src',offimg);
-       bgm.muted = true;
-       break;
- }
+      onoff = "off";
+      $(this).attr('src',offimg);
+      bgm.muted = true;
+      break;
+}
   });
 
   document.getElementById("btnarea").onclick = function(){

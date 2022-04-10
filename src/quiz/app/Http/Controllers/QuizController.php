@@ -16,9 +16,15 @@ class QuizController extends Controller
       // $users_id = Auth::id();
       $term_id = $request->term_id;
       $result_num = 'result'.$term_id;
-      User::where('id', 1)->update([$result_num => $result]);
-      return redirect( route('term') )->withInput();
+      // User::where('id', 1)->update([$result_num => $result]);
+
+      $unlock = (int)$result_num + 3;
+      if($result < 10 && $request->has('result')){
+        session()->flash('flash_message','ターム'.$unlock.'がアンロックされました。');
+      }
+      return redirect(route('term'))->withInput();
   }
+
   public function term(Request $request)
   {
     $quizzes = Quiz::groupBy('term')->get(['term']);
@@ -28,23 +34,26 @@ class QuizController extends Controller
     }
 
     $user = User::find(1);
-    for($i = 1; $i <= 6; $i++){
-      $user_result1 = $user->result1;
-      $user_result2 = $user->result2;
-      $user_result3 = $user->result3;
-      $user_result4 = $user->result4;
-      $user_result5 = $user->result5;
-      $user_result6 = $user->result6;
+    if(isset($user->result1)){
+      for($i = 1; $i <= 6; $i++){
+        $user_result1 = $user->result1;
+        $user_result2 = $user->result2;
+        $user_result3 = $user->result3;
+        $user_result4 = $user->result4;
+        $user_result5 = $user->result5;
+        $user_result6 = $user->result6;
+      }
+      $arry_result = array(
+        $user_result1,
+        $user_result2,
+        $user_result3,
+        $user_result4,
+        $user_result5,
+        $user_result6
+      );
+    } else {
+      $arry_result = null;
     }
-    $arry_result = array(
-      $user_result1,
-      $user_result2,
-      $user_result3,
-      $user_result4,
-      $user_result5,
-      $user_result6
-    );
-
     return view('page.term', compact('terms', 'arry_result'));
   }
 

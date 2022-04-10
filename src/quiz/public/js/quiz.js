@@ -2,8 +2,19 @@
 choices = 4;
 setReady();
 
-$('.hintbtn').on('click', function() {
-  $("#hint").toggleClass("active");
+// $('.hintbtn').on('click', function() {
+//   $("#hint").toggleClass("active");
+// });
+
+$(function(){
+  $('.js-modal-open').on('click',function(){
+    $('.js-modal').fadeIn();
+    return false;
+  });
+  $('.js-modal-close').on('click',function(){
+    $('.js-modal').fadeOut();
+    return false;
+  });
 });
 
 //正解数カウント
@@ -19,12 +30,12 @@ function quiz() {
   var s, n;
   document.getElementById("text_n").innerHTML = "Q" + (quiz_count + 1) + "/10";
   document.getElementById("text_q").innerHTML = quizzes[quiz_count]['question'];
-  document.getElementById("hint").innerHTML = quizzes[quiz_count]['type'];
+  document.getElementById("hint").innerHTML = quizzes[quiz_count]['hint'];
   //選択肢
   s = "";
   for (n = 1; n <= choices; n++) {
       if (quizzes[quiz_count]['choice' + n] != "") {
-          s += "<a href='javascript:answer(" + n + ")'>" +  quizzes[quiz_count]['choice' + n] + "</a>";
+          s += "<a href='javascript:answer(" + n + ")'><span class='sel'>" + n + "</span>" +  quizzes[quiz_count]['choice' + n] + "</a>";
       }
   }
   document.getElementById("text_s").innerHTML = s;
@@ -79,6 +90,7 @@ function answer(num) {
     s = "<a href='javascript:history.back()'>前のページに戻る</a>";
     s += "<a href='javascript:setReady()'>同じ問題を最初から</a>";
     s += "<a href=''>次へ</a>";
+    s += "<input type='submit' value='タームに戻る'>";
     s += "</div>";
     document.getElementById("text_s").innerHTML = s;
     var a = {};
